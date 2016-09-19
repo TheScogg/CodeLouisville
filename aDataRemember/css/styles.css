@@ -1,3 +1,35 @@
 body {
-    background-color : red;
+    background-color : #e8fcff;
+}
+
+.generateActivityButtons {
+    height : 200px;
+    background-color: #ceeeff;
+    margin-top: 20px;
+}
+
+.activityHolder {
+    height : 200px;
+    background-color: #ceeeff;
+    margin-top: 20px;
+}
+
+.generateSurvey {
+    height : 200px;
+    background-color: #f8c8ff;
+    margin-top: 20px;
+}
+
+/** BUTTON CLASSES **/
+.btn {
+    margin: 10px 10px 10px 0px;
+}
+
+.good {
+    background-color: lawngreen;
+    color: black;
+}
+
+.bad {
+    background-color: firebrick;
 }

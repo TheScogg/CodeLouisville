@@ -4,9 +4,83 @@
 console.log("JS Running");
 
 $(document).ready(function () {
-    //Draw buttons for daily activities
-    var drawButtons = function () {
+    //Master List of activities, will eventually be pulled from MongoDB
+    var activities = {
+        0: ["Cleaned house / car", "good"],
+        1: ["Worked Out / Ran", "good"],
+        2: ["Smoked Cigarettes", "bad"],
+        3: ["Drank Alcohol", "bad"],
+        4: ["Watched Television", "neutral"],
+        5: ["Did a Hobby", "neutral"]
+    };
 
+    var colors = ['#C72113', '#9E5218', '#935116', '#CB4335', '#196F3D', '#B9770E', '#27AE60', '#F4D03F', '#1A5276', '#633974', '#48C9B0', '#AF7AC5'];
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Randomize button colors for aesthetics. 'Good buttons' at top of spectrum, 'Bad buttons' at bottom of spectrum//
+    var randButtonColors = function () {
+        var random = Math.random().toString(16).slice(2, 8).toUpperCase();
+        console.log(random);
+        return random;
+    };
+
+    //Select black or white button text, depending on background color
+    function getContrastYIQ(hexcolor){
+        var r = parseInt(hexcolor.substr(0,2),16);
+        var g = parseInt(hexcolor.substr(2,2),16);
+        var b = parseInt(hexcolor.substr(4,2),16);
+        var yiq = ((r*299)+(g*587)+(b*114))/1000;
+        return (yiq >= 131.5) ? 'black' : 'white';
     }
 
+    //Draw buttons for daily activities
+    var drawButtons = function (activities) {
+        //Get length of activities list. For some reason, I can't just put Object.keys(activities).length in middle of for loop. Fix?
+        var numButtons = (Object.keys(activities).length);
+
+        //Iterate through activities object by index, and draw buttons
+        for (var i = 0; i < numButtons; i++) {
+        //create div for buttons inside .generateActivityButtons after <span>
+        //var button = $(".generateActivityButtons").append('<button e="button" class="btn btn-primary">' + activities[i][0] + '</button>');
+            //Creating button element, finding BG Color, and Text Color
+            var bgHexColor = randButtonColors();
+            var textColor = getContrastYIQ(bgHexColor);
+            var button = $('<button type="button" class="btn btn-primary unselected">' + activities[i][0] + '</button>')
+                .css({"background-color":"#" + bgHexColor,
+                        "color": textColor,
+                        "font-weight" : "bold"});
+            $(".generateActivityButtons").append(button);
+        }
+
+    };
+
+    //Propagate activity buttons
+    drawButtons(activities);
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //PROPOGATE SURVEY & BUBBLES (RADIO TAG)//
+    var drawSurvey = function () {
+        //Create each individual survey question and radio form
+        $survey = $('<form action=""></form>');
+        for (var i = 0; i<10; i++) {
+            $($survey).append('<input type=radio name="bill">');
+        }
+
+        //Propogate survey lines to each question - phsysical, mental, psychological
+        $('.drawSurvey').find("div").append($survey);
+
+    };
+
+    drawSurvey();
+
+    //On Click, moves activity buttons back and forth from .generateActivityButtons & activityHolder
+    $(".btn").click('on', function () {
+        if ($( this ).parent().hasClass("generateActivityButtons")) {
+            $(".activityHolder").append(this);
+        } else if ($( this ).parent().hasClass("activityHolder")) {
+            $(".generateActivityButtons").append(this);
+        }
+    });
 });

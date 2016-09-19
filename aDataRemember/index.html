@@ -4,21 +4,49 @@
     <meta charset="UTF-8">
     <title>myLifeData.com</title>
 
-    <!== ADD CUSTOM CSS STYLING ==>
-    <link rel="stylesheet" href="css/styles.css">
-
     <!== LOADING JQUERY ==>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
     <!== LOADING BOOSTRAP ==>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!== LOADING CUSTOM CSS ==>
+    <!== ADD CUSTOM CSS STYLING ==>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!== LOADING APP ==>
     <script src="js/app.js"></script>
 </head>
 <body>
     <div id="row">
-        
+        <div class="container-fluid">
+            <div class="col-md-12 generateActivityButtons">
+                <span>Please select at least 5 activities you took part in today. The more the better - we recommend 10!</span><br>
+            </div>
+
+            <div class="col-md-12 activityHolder">
+                <span>Selected Activites. Click to Remove.</span><br>
+            </div>
+
+            <div class="col-md-12 drawSurvey">
+                <span>Now, fill out the survey below and tell us how you felt overall today.</span><br>
+                <div id="physical">
+
+                </div>
+
+                <div id="mental">
+
+                </div>
+
+                <div id="psychological">
+
+                </div>
+            </div>
+    </div>
+
+    <div id="row">
+        <div id="container-fluid">
+
+        </div>
     </div>
 </body>
 </html>
