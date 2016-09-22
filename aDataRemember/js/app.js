@@ -63,9 +63,13 @@ $(document).ready(function () {
     //PROPOGATE SURVEY & BUBBLES (RADIO TAG)//
     var drawSurvey = function () {
         //Create each individual survey question and radio form
+        var radio_location = 1;
+
         $survey = $('<form action=""></form>');
         for (var i = 0; i<10; i++) {
-            $($survey).append('<input type=radio name="bill">');
+            $($survey).append(radio_location + '  <input type=radio name="bill" style="margin-right:10px;">');
+
+            radio_location++;
         }
 
         //Propogate survey lines to each question - phsysical, mental, psychological
@@ -84,3 +88,34 @@ $(document).ready(function () {
         }
     });
 });
+
+
+
+
+
+//Need login system via php
+//Chart.js to plot happiness vs sadness activities based on date
+//Have user select date and show based on activities what the user rated them
+
+
+
+
+
+
+//Exceptions
+/*
+
+var char_except_1 = "ch";
+var char_except_2 = "x";
+
+var string_parse = 
+if string parse = char_except_2;
+
+
+
+
+
+
+
+
+*/
