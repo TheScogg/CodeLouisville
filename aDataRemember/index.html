@@ -19,12 +19,53 @@
 <body>
     <div id="row" style="margin-bottom:35px;">
         <div class="container-fluid">
+
+            <div class="col-md-12 new_activity" style="background-color:#303030;color:white;margin:20px 0px 20px 0px;height:350px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;font-weight:700;">
+                Test
+
+   
+
+                <input type="text" name="activity_creation" id="activity_creation" style="color:#1e1e1e;" />
+                
+                <button id="submit_button">Add to list</button>
+
+
+
+                <!--  
+                    
+                    Goal is to:
+
+                    1. Setup a side box that any deleted items are moved to for a history of previously set activities. This is recommended for database layout to prevent overloading of activities that may be the 
+                    same or extremely similar. 
+                    2. Utilize original two boxes for deletion and restoration of previous events. 
+                    3. Create third box to allow users to create 
+                    
+                    -->
+                <div style="width:150px;height:150px;background-color:blue;margin-top:15px;" id="test_receiving_container">
+
+                </div>
+
+            </div>
+
+
+
             <div class="col-md-12 generateActivityButtons">
-                <span>Please select at least 5 activities you took part in today. The more the better - we recommend 10!</span><br>
+                <span>Please select at least 5 activities you took part in today. The more the better - we recommend 10!  
+                This tab will receive the new buttons created. Possibly in the future have tooltips to recommend relatable activities. 
+
+                <!--
+                    
+                    object or array to define all activities that could possibly be relatable or just a list small or large
+
+
+                
+                -->
+                
+                </span><br>
             </div>
 
             <div class="col-md-12 activityHolder">
-                <span>Selected Activites. Click to Remove.</span><br>
+                <span>Selected Activites. Click to Remove. Restore tab.</span><br>
             </div>
 
             <div class="col-md-12 drawSurvey">

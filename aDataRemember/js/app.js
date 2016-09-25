@@ -3,7 +3,31 @@
  */
 console.log("JS Running");
 
+
+
 $(document).ready(function () {
+    //This action is to allow a user to create their own custom activity buttons and add them.
+
+    var created_activities = [];
+
+    $("#submit_button").click('on', function () {
+
+
+        var input_value = $("#activity_creation").val(); 
+        created_activities.push(input_value);
+        console.log(created_activities);
+
+
+    
+        var test = $("#test_receiving_container");
+        $.each(created_activities, function(index, value) {
+            test.push('<span>' + value + '</span>');
+        });
+
+    });
+
+    //
+
     //Master List of activities, will eventually be pulled from MongoDB
     var activities = {
         0: ["Cleaned house / car", "good"],
@@ -13,6 +37,10 @@ $(document).ready(function () {
         4: ["Watched Television", "neutral"],
         5: ["Did a Hobby", "neutral"]
     };
+
+ 
+
+
 
     var colors = ['#C72113', '#9E5218', '#935116', '#CB4335', '#196F3D', '#B9770E', '#27AE60', '#F4D03F', '#1A5276', '#633974', '#48C9B0', '#AF7AC5'];
 
