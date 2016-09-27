@@ -64,16 +64,13 @@ $(document).ready(function () {
     //Draw buttons for daily activities
     var drawButtons = function (activities) {
         //Get length of activities list. For some reason, I can't just put Object.keys(activities).length in middle of for loop. Fix?
-        var numButtons = (Object.keys(activities).length);
 
-        //Iterate through activities object by index, and draw buttons
-        for (var i = 0; i < numButtons; i++) {
         //create div for buttons inside .generateActivityButtons after <span>
         //var button = $(".generateActivityButtons").append('<button e="button" class="btn btn-primary">' + activities[i][0] + '</button>');
             //Creating button element, finding BG Color, and Text Color
             var bgHexColor = randButtonColors();
             var textColor = getContrastYIQ(bgHexColor);
-            var button = $('<button type="button" class="btn btn-primary unselected">' + activities[i][0] + '</button>')
+            button = $('<button type="button" class="btn btn-primary unselected">' + activities[i][0] + '</button>')
                 .css({"background-color":"#" + bgHexColor,
                         "color": textColor,
                         "font-weight" : "bold"});
@@ -114,6 +111,18 @@ $(document).ready(function () {
         } else if ($( this ).parent().hasClass("activityHolder")) {
             $(".generateActivityButtons").append(this);
         }
+    });
+
+    //Implement adding custom activities : Accepts a new acitivity button name, and adds it to the 'activities' list.
+    //To Add : Create new button and add to activity selection div
+    $("#addToList_button").click('on', function () {
+        keyName = 0;
+       for (numberOfProps in activities) {
+           keyName++;
+       }
+
+        activities[keyName] = [$('#activity_creation').val()];
+        drawButtons(activities[keyName][0]);
     });
 });
 
